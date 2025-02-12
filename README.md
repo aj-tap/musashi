@@ -2,6 +2,10 @@
 
 Musashi is a Python 3 tool designed for rapid triage of logs using SIGMA rules. It supports various log formats, including Azure, Defender, Cortex, CarbonBlack, and more. Musashi also extracts Indicators of Compromise (IOCs) to assist in quick threat detection and incident response.
 
+below is sample demo of EDR logs from Defender Musashi demonstrates the use case of EDR logs from Defender detecting Lumma Stealer through a fake CAPTCHA.
+
+## Demo: Detecting Lumma Stealer
+Below is a sample demo showcasing Musashi analyzing EDR logs from Defender, successfully detecting Lumma Stealer delivered via a fake CAPTCHA attack.
 [![asciicast](https://asciinema.org/a/JjkU9hEM6xW40SqCgWuTi8YAb.svg)](https://asciinema.org/a/JjkU9hEM6xW40SqCgWuTi8YAb)
 
 ## Why Use Musashi?
