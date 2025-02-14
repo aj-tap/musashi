@@ -1,0 +1,2651 @@
+{
+    "attack.t1055.011": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1053.005": [
+        "Execution",
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1205.002": [
+        "Defense-evasion",
+        "Persistence",
+        "Command-and-control"
+    ],
+    "attack.t1066": [
+        "Defense-evasion"
+    ],
+    "attack.t1560.001": [
+        "Collection"
+    ],
+    "attack.t1021.005": [
+        "Lateral-movement"
+    ],
+    "attack.t1047": [
+        "Execution"
+    ],
+    "attack.t1156": [
+        "Persistence"
+    ],
+    "attack.t1113": [
+        "Collection"
+    ],
+    "attack.t1027.011": [
+        "Defense-evasion"
+    ],
+    "attack.t1067": [
+        "Persistence"
+    ],
+    "attack.t1037": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1557": [
+        "Credential-access",
+        "Collection"
+    ],
+    "attack.t1033": [
+        "Discovery"
+    ],
+    "attack.t1583": [
+        "Resource-development"
+    ],
+    "attack.t1218.011": [
+        "Defense-evasion"
+    ],
+    "attack.t1613": [
+        "Discovery"
+    ],
+    "attack.t1583.007": [
+        "Resource-development"
+    ],
+    "attack.t1143": [
+        "Defense-evasion"
+    ],
+    "attack.t1161": [
+        "Persistence"
+    ],
+    "attack.t1132.001": [
+        "Command-and-control"
+    ],
+    "attack.t1027.009": [
+        "Defense-evasion"
+    ],
+    "attack.t1150": [
+        "Defense-evasion",
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1556.003": [
+        "Credential-access",
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1578.004": [
+        "Defense-evasion"
+    ],
+    "attack.t1148": [
+        "Defense-evasion"
+    ],
+    "attack.t1592": [
+        "Reconnaissance"
+    ],
+    "attack.t1596.003": [
+        "Reconnaissance"
+    ],
+    "attack.t1056.001": [
+        "Collection",
+        "Credential-access"
+    ],
+    "attack.t1564.012": [
+        "Defense-evasion"
+    ],
+    "attack.t1222.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1110.001": [
+        "Credential-access"
+    ],
+    "attack.t1216.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1597.002": [
+        "Reconnaissance"
+    ],
+    "attack.t1003": [
+        "Credential-access"
+    ],
+    "attack.t1129": [
+        "Execution"
+    ],
+    "attack.t1602": [
+        "Collection"
+    ],
+    "attack.t1561.002": [
+        "Impact"
+    ],
+    "attack.t1498.001": [
+        "Impact"
+    ],
+    "attack.t1492": [
+        "Impact"
+    ],
+    "attack.t1574.007": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1213.002": [
+        "Collection"
+    ],
+    "attack.t1006": [
+        "Defense-evasion"
+    ],
+    "attack.t1044": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1588.007": [
+        "Resource-development"
+    ],
+    "attack.t1666": [
+        "Defense-evasion"
+    ],
+    "attack.t1564.008": [
+        "Defense-evasion"
+    ],
+    "attack.t1491.002": [
+        "Impact"
+    ],
+    "attack.t1027.013": [
+        "Defense-evasion"
+    ],
+    "attack.t1171": [
+        "Credential-access"
+    ],
+    "attack.t1590.005": [
+        "Reconnaissance"
+    ],
+    "attack.t1499.001": [
+        "Impact"
+    ],
+    "attack.t1014": [
+        "Defense-evasion"
+    ],
+    "attack.t1546.013": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1059.007": [
+        "Execution"
+    ],
+    "attack.t1590.002": [
+        "Reconnaissance"
+    ],
+    "attack.t1501": [
+        "Persistence"
+    ],
+    "attack.t1485.001": [
+        "Impact"
+    ],
+    "attack.t1514": [
+        "Privilege-escalation"
+    ],
+    "attack.t1123": [
+        "Collection"
+    ],
+    "attack.t1543": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1133": [
+        "Persistence",
+        "Initial-access"
+    ],
+    "attack.t1109": [
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1546.006": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1539": [
+        "Credential-access"
+    ],
+    "attack.t1053.007": [
+        "Execution",
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1568.002": [
+        "Command-and-control"
+    ],
+    "attack.t1036.007": [
+        "Defense-evasion"
+    ],
+    "attack.t1548.002": [
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1099": [
+        "Defense-evasion"
+    ],
+    "attack.t1496.003": [
+        "Impact"
+    ],
+    "attack.t1016.001": [
+        "Discovery"
+    ],
+    "attack.t1548.003": [
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1560.003": [
+        "Collection"
+    ],
+    "attack.t1578": [
+        "Defense-evasion"
+    ],
+    "attack.t1584.008": [
+        "Resource-development"
+    ],
+    "attack.t1583.008": [
+        "Resource-development"
+    ],
+    "attack.t1069": [
+        "Discovery"
+    ],
+    "attack.t1114": [
+        "Collection"
+    ],
+    "attack.t1003.002": [
+        "Credential-access"
+    ],
+    "attack.t1596.002": [
+        "Reconnaissance"
+    ],
+    "attack.t1542.001": [
+        "Persistence",
+        "Defense-evasion"
+    ],
+    "attack.t1594": [
+        "Reconnaissance"
+    ],
+    "attack.t1069.003": [
+        "Discovery"
+    ],
+    "attack.t1574.011": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1596.001": [
+        "Reconnaissance"
+    ],
+    "attack.t1499.003": [
+        "Impact"
+    ],
+    "attack.t1163": [
+        "Persistence"
+    ],
+    "attack.t1195.001": [
+        "Initial-access"
+    ],
+    "attack.t1588.004": [
+        "Resource-development"
+    ],
+    "attack.t1583.002": [
+        "Resource-development"
+    ],
+    "attack.t1561": [
+        "Impact"
+    ],
+    "attack.t1071.004": [
+        "Command-and-control"
+    ],
+    "attack.t1552.005": [
+        "Credential-access"
+    ],
+    "attack.t1555.002": [
+        "Credential-access"
+    ],
+    "attack.t1615": [
+        "Discovery"
+    ],
+    "attack.t1542.003": [
+        "Persistence",
+        "Defense-evasion"
+    ],
+    "attack.t1025": [
+        "Collection"
+    ],
+    "attack.t1116": [
+        "Defense-evasion"
+    ],
+    "attack.t1218.013": [
+        "Defense-evasion"
+    ],
+    "attack.t1522": [
+        "Credential-access"
+    ],
+    "attack.t1093": [
+        "Defense-evasion"
+    ],
+    "attack.t1074.001": [
+        "Collection"
+    ],
+    "attack.t1036.005": [
+        "Defense-evasion"
+    ],
+    "attack.t1172": [
+        "Command-and-control"
+    ],
+    "attack.t1587.003": [
+        "Resource-development"
+    ],
+    "attack.t1565.001": [
+        "Impact"
+    ],
+    "attack.t1110.002": [
+        "Credential-access"
+    ],
+    "attack.t1178": [
+        "Privilege-escalation"
+    ],
+    "attack.t1114.001": [
+        "Collection"
+    ],
+    "attack.t1555.001": [
+        "Credential-access"
+    ],
+    "attack.t1547": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1003.004": [
+        "Credential-access"
+    ],
+    "attack.t1013": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1600": [
+        "Defense-evasion"
+    ],
+    "attack.t1606.002": [
+        "Credential-access"
+    ],
+    "attack.t1192": [
+        "Initial-access"
+    ],
+    "attack.t1036.008": [
+        "Defense-evasion"
+    ],
+    "attack.t1489": [
+        "Impact"
+    ],
+    "attack.t1587.001": [
+        "Resource-development"
+    ],
+    "attack.t1121": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1652": [
+        "Discovery"
+    ],
+    "attack.t1206": [
+        "Privilege-escalation"
+    ],
+    "attack.t1087.002": [
+        "Discovery"
+    ],
+    "attack.t1547.014": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1564": [
+        "Defense-evasion"
+    ],
+    "attack.t1559.002": [
+        "Execution"
+    ],
+    "attack.t1204.002": [
+        "Execution"
+    ],
+    "attack.t1591.003": [
+        "Reconnaissance"
+    ],
+    "attack.t1063": [
+        "Discovery"
+    ],
+    "attack.t1071.005": [
+        "Command-and-control"
+    ],
+    "attack.t1592.001": [
+        "Reconnaissance"
+    ],
+    "attack.t1080": [
+        "Lateral-movement"
+    ],
+    "attack.t1484.002": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1573.001": [
+        "Command-and-control"
+    ],
+    "attack.t1087.001": [
+        "Discovery"
+    ],
+    "attack.t1167": [
+        "Credential-access"
+    ],
+    "attack.t1586.001": [
+        "Resource-development"
+    ],
+    "attack.t1527": [
+        "Defense-evasion",
+        "Lateral-movement"
+    ],
+    "attack.t1562.009": [
+        "Defense-evasion"
+    ],
+    "attack.t1180": [
+        "Persistence"
+    ],
+    "attack.t1542.005": [
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1543.003": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1568.001": [
+        "Command-and-control"
+    ],
+    "attack.t1497.001": [
+        "Defense-evasion",
+        "Discovery"
+    ],
+    "attack.t1053.003": [
+        "Execution",
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1069.002": [
+        "Discovery"
+    ],
+    "attack.t1588.006": [
+        "Resource-development"
+    ],
+    "attack.t1566.002": [
+        "Initial-access"
+    ],
+    "attack.t1165": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1070.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1499.004": [
+        "Impact"
+    ],
+    "attack.t1137": [
+        "Persistence"
+    ],
+    "attack.t1218.004": [
+        "Defense-evasion"
+    ],
+    "attack.t1598.003": [
+        "Reconnaissance"
+    ],
+    "attack.t1021.004": [
+        "Lateral-movement"
+    ],
+    "attack.t1098.003": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1547.012": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1089": [
+        "Defense-evasion"
+    ],
+    "attack.t1487": [
+        "Impact"
+    ],
+    "attack.t1566.001": [
+        "Initial-access"
+    ],
+    "attack.t1214": [
+        "Credential-access"
+    ],
+    "attack.t1027.008": [
+        "Defense-evasion"
+    ],
+    "attack.t1559.001": [
+        "Execution"
+    ],
+    "attack.t1574.001": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1119": [
+        "Collection"
+    ],
+    "attack.t1115": [
+        "Collection"
+    ],
+    "attack.t1003.007": [
+        "Credential-access"
+    ],
+    "attack.t1583.005": [
+        "Resource-development"
+    ],
+    "attack.t1555.005": [
+        "Credential-access"
+    ],
+    "attack.t1103": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1553.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1608.004": [
+        "Resource-development"
+    ],
+    "attack.t1007": [
+        "Discovery"
+    ],
+    "attack.t1040": [
+        "Credential-access",
+        "Discovery"
+    ],
+    "attack.t1017": [
+        "Lateral-movement"
+    ],
+    "attack.t1553.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1530": [
+        "Collection"
+    ],
+    "attack.t1565.003": [
+        "Impact"
+    ],
+    "attack.t1552.002": [
+        "Credential-access"
+    ],
+    "attack.t1135": [
+        "Discovery"
+    ],
+    "attack.t1120": [
+        "Discovery"
+    ],
+    "attack.t1036.009": [
+        "Defense-evasion"
+    ],
+    "attack.t1590.004": [
+        "Reconnaissance"
+    ],
+    "attack.t1587.002": [
+        "Resource-development"
+    ],
+    "attack.t1222.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1137.006": [
+        "Persistence"
+    ],
+    "attack.t1505.002": [
+        "Persistence"
+    ],
+    "attack.t1082": [
+        "Discovery"
+    ],
+    "attack.t1071": [
+        "Command-and-control"
+    ],
+    "attack.t1574.014": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1074.002": [
+        "Collection"
+    ],
+    "attack.t1098.006": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1053": [
+        "Execution",
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1218.007": [
+        "Defense-evasion"
+    ],
+    "attack.t1162": [
+        "Persistence"
+    ],
+    "attack.t1590.003": [
+        "Reconnaissance"
+    ],
+    "attack.t1498.002": [
+        "Impact"
+    ],
+    "attack.t1556.002": [
+        "Credential-access",
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1505.005": [
+        "Persistence"
+    ],
+    "attack.t1059.002": [
+        "Execution"
+    ],
+    "attack.t1176": [
+        "Persistence"
+    ],
+    "attack.t1499.002": [
+        "Impact"
+    ],
+    "attack.t1195.003": [
+        "Initial-access"
+    ],
+    "attack.t1106": [
+        "Execution"
+    ],
+    "attack.t1558.005": [
+        "Credential-access"
+    ],
+    "attack.t1070.007": [
+        "Defense-evasion"
+    ],
+    "attack.t1558.004": [
+        "Credential-access"
+    ],
+    "attack.t1058": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1584.003": [
+        "Resource-development"
+    ],
+    "attack.t1059.010": [
+        "Execution"
+    ],
+    "attack.t1600.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1070.003": [
+        "Defense-evasion"
+    ],
+    "attack.t1202": [
+        "Defense-evasion"
+    ],
+    "attack.t1024": [
+        "Command-and-control"
+    ],
+    "attack.t1536": [
+        "Defense-evasion"
+    ],
+    "attack.t1091": [
+        "Lateral-movement",
+        "Initial-access"
+    ],
+    "attack.t1005": [
+        "Collection"
+    ],
+    "attack.t1140": [
+        "Defense-evasion"
+    ],
+    "attack.t1137.005": [
+        "Persistence"
+    ],
+    "attack.t1562": [
+        "Defense-evasion"
+    ],
+    "attack.t1586.003": [
+        "Resource-development"
+    ],
+    "attack.t1586.002": [
+        "Resource-development"
+    ],
+    "attack.t1098.007": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1608.001": [
+        "Resource-development"
+    ],
+    "attack.t1195": [
+        "Initial-access"
+    ],
+    "attack.t1190": [
+        "Initial-access"
+    ],
+    "attack.t1558": [
+        "Credential-access"
+    ],
+    "attack.t1555": [
+        "Credential-access"
+    ],
+    "attack.t1567": [
+        "Exfiltration"
+    ],
+    "attack.t1219": [
+        "Command-and-control"
+    ],
+    "attack.t1583.001": [
+        "Resource-development"
+    ],
+    "attack.t1560.002": [
+        "Collection"
+    ],
+    "attack.t1055.003": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1079": [
+        "Command-and-control"
+    ],
+    "attack.t1036": [
+        "Defense-evasion"
+    ],
+    "attack.t1546.011": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1552": [
+        "Credential-access"
+    ],
+    "attack.t1547.010": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1070.008": [
+        "Defense-evasion"
+    ],
+    "attack.t1037.002": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1659": [
+        "Initial-access",
+        "Command-and-control"
+    ],
+    "attack.t1055": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1567.004": [
+        "Exfiltration"
+    ],
+    "attack.t1139": [
+        "Credential-access"
+    ],
+    "attack.t1205": [
+        "Defense-evasion",
+        "Persistence",
+        "Command-and-control"
+    ],
+    "attack.t1021.008": [
+        "Lateral-movement"
+    ],
+    "attack.t1503": [
+        "Credential-access"
+    ],
+    "attack.t1218": [
+        "Defense-evasion"
+    ],
+    "attack.t1153": [
+        "Execution"
+    ],
+    "attack.t1038": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1050": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1070.006": [
+        "Defense-evasion"
+    ],
+    "attack.t1557.004": [
+        "Credential-access",
+        "Collection"
+    ],
+    "attack.t1620": [
+        "Defense-evasion"
+    ],
+    "attack.t1016.002": [
+        "Discovery"
+    ],
+    "attack.t1480.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1564.011": [
+        "Defense-evasion"
+    ],
+    "attack.t1611": [
+        "Privilege-escalation"
+    ],
+    "attack.t1547.009": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1010": [
+        "Discovery"
+    ],
+    "attack.t1032": [
+        "Command-and-control"
+    ],
+    "attack.t1087.003": [
+        "Discovery"
+    ],
+    "attack.t1062": [
+        "Persistence"
+    ],
+    "attack.t1497.003": [
+        "Defense-evasion",
+        "Discovery"
+    ],
+    "attack.t1182": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1218.003": [
+        "Defense-evasion"
+    ],
+    "attack.t1563.001": [
+        "Lateral-movement"
+    ],
+    "attack.t1562.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1029": [
+        "Exfiltration"
+    ],
+    "attack.t1021.002": [
+        "Lateral-movement"
+    ],
+    "attack.t1525": [
+        "Persistence"
+    ],
+    "attack.t1572": [
+        "Command-and-control"
+    ],
+    "attack.t1218.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1599.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1608.002": [
+        "Resource-development"
+    ],
+    "attack.t1547.005": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1004": [
+        "Persistence"
+    ],
+    "attack.t1009": [
+        "Defense-evasion"
+    ],
+    "attack.t1550": [
+        "Defense-evasion",
+        "Lateral-movement"
+    ],
+    "attack.t1076": [
+        "Lateral-movement"
+    ],
+    "attack.t1597.001": [
+        "Reconnaissance"
+    ],
+    "attack.t1011": [
+        "Exfiltration"
+    ],
+    "attack.t1602.002": [
+        "Collection"
+    ],
+    "attack.t1589": [
+        "Reconnaissance"
+    ],
+    "attack.t1131": [
+        "Persistence"
+    ],
+    "attack.t1181": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1562.004": [
+        "Defense-evasion"
+    ],
+    "attack.t1560": [
+        "Collection"
+    ],
+    "attack.t1152": [
+        "Defense-evasion",
+        "Execution",
+        "Persistence"
+    ],
+    "attack.t1553.003": [
+        "Defense-evasion"
+    ],
+    "attack.t1483": [
+        "Command-and-control"
+    ],
+    "attack.t1185": [
+        "Collection"
+    ],
+    "attack.t1021": [
+        "Lateral-movement"
+    ],
+    "attack.t1071.003": [
+        "Command-and-control"
+    ],
+    "attack.t1556.007": [
+        "Credential-access",
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1595.002": [
+        "Reconnaissance"
+    ],
+    "attack.t1059.009": [
+        "Execution"
+    ],
+    "attack.t1596": [
+        "Reconnaissance"
+    ],
+    "attack.t1218.015": [
+        "Defense-evasion"
+    ],
+    "attack.t1562.012": [
+        "Defense-evasion"
+    ],
+    "attack.t1207": [
+        "Defense-evasion"
+    ],
+    "attack.t1553.006": [
+        "Defense-evasion"
+    ],
+    "attack.t1610": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1107": [
+        "Defense-evasion"
+    ],
+    "attack.t1145": [
+        "Credential-access"
+    ],
+    "attack.t1112": [
+        "Defense-evasion"
+    ],
+    "attack.t1543.004": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1580": [
+        "Discovery"
+    ],
+    "attack.t1555.003": [
+        "Credential-access"
+    ],
+    "attack.t1574.008": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1491": [
+        "Impact"
+    ],
+    "attack.t1535": [
+        "Defense-evasion"
+    ],
+    "attack.t1557.003": [
+        "Credential-access",
+        "Collection"
+    ],
+    "attack.t1155": [
+        "Execution"
+    ],
+    "attack.t1563": [
+        "Lateral-movement"
+    ],
+    "attack.t1027.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1505.003": [
+        "Persistence"
+    ],
+    "attack.t1484.001": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1217": [
+        "Discovery"
+    ],
+    "attack.t1552.004": [
+        "Credential-access"
+    ],
+    "attack.t1583.004": [
+        "Resource-development"
+    ],
+    "attack.t1021.006": [
+        "Lateral-movement"
+    ],
+    "attack.t1011.001": [
+        "Exfiltration"
+    ],
+    "attack.t1078.001": [
+        "Defense-evasion",
+        "Persistence",
+        "Privilege-escalation",
+        "Initial-access"
+    ],
+    "attack.t1547.003": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1183": [
+        "Privilege-escalation",
+        "Persistence",
+        "Defense-evasion"
+    ],
+    "attack.t1085": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1031": [
+        "Persistence"
+    ],
+    "attack.t1546.005": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1574.006": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1136.001": [
+        "Persistence"
+    ],
+    "attack.t1092": [
+        "Command-and-control"
+    ],
+    "attack.t1070.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1585.002": [
+        "Resource-development"
+    ],
+    "attack.t1557.001": [
+        "Credential-access",
+        "Collection"
+    ],
+    "attack.t1222": [
+        "Defense-evasion"
+    ],
+    "attack.t1003.001": [
+        "Credential-access"
+    ],
+    "attack.t1053.001": [
+        "Execution",
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1179": [
+        "Persistence",
+        "Privilege-escalation",
+        "Credential-access"
+    ],
+    "attack.t1595": [
+        "Reconnaissance"
+    ],
+    "attack.t1547.011": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1548": [
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1134.002": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1548.001": [
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1547.004": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1019": [
+        "Persistence"
+    ],
+    "attack.t1021.003": [
+        "Lateral-movement"
+    ],
+    "attack.t1042": [
+        "Persistence"
+    ],
+    "attack.t1117": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1110.003": [
+        "Credential-access"
+    ],
+    "attack.t1090.002": [
+        "Command-and-control"
+    ],
+    "attack.t1056.003": [
+        "Collection",
+        "Credential-access"
+    ],
+    "attack.t1589.002": [
+        "Reconnaissance"
+    ],
+    "attack.t1164": [
+        "Persistence"
+    ],
+    "attack.t1054": [
+        "Defense-evasion"
+    ],
+    "attack.t1598.004": [
+        "Reconnaissance"
+    ],
+    "attack.t1108": [
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1193": [
+        "Initial-access"
+    ],
+    "attack.t1003.005": [
+        "Credential-access"
+    ],
+    "attack.t1098.004": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1215": [
+        "Persistence"
+    ],
+    "attack.t1101": [
+        "Persistence"
+    ],
+    "attack.t1590.006": [
+        "Reconnaissance"
+    ],
+    "attack.t1546.012": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1218.008": [
+        "Defense-evasion"
+    ],
+    "attack.t1593.002": [
+        "Reconnaissance"
+    ],
+    "attack.t1177": [
+        "Execution",
+        "Persistence"
+    ],
+    "attack.t1591.002": [
+        "Reconnaissance"
+    ],
+    "attack.t1548.005": [
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1125": [
+        "Collection"
+    ],
+    "attack.t1144": [
+        "Defense-evasion"
+    ],
+    "attack.t1045": [
+        "Defense-evasion"
+    ],
+    "attack.t1055.013": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1016": [
+        "Discovery"
+    ],
+    "attack.t1578.003": [
+        "Defense-evasion"
+    ],
+    "attack.t1593.003": [
+        "Reconnaissance"
+    ],
+    "attack.t1574.005": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1546.008": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1496.002": [
+        "Impact"
+    ],
+    "attack.t1504": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1198": [
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1087": [
+        "Discovery"
+    ],
+    "attack.t1090": [
+        "Command-and-control"
+    ],
+    "attack.t1059": [
+        "Execution"
+    ],
+    "attack.t1562.006": [
+        "Defense-evasion"
+    ],
+    "attack.t1136.002": [
+        "Persistence"
+    ],
+    "attack.t1589.003": [
+        "Reconnaissance"
+    ],
+    "attack.t1482": [
+        "Discovery"
+    ],
+    "attack.t1558.001": [
+        "Credential-access"
+    ],
+    "attack.t1175": [
+        "Lateral-movement",
+        "Execution"
+    ],
+    "attack.t1020": [
+        "Exfiltration"
+    ],
+    "attack.t1592.004": [
+        "Reconnaissance"
+    ],
+    "attack.t1562.007": [
+        "Defense-evasion"
+    ],
+    "attack.t1036.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1588.001": [
+        "Resource-development"
+    ],
+    "attack.t1542.002": [
+        "Persistence",
+        "Defense-evasion"
+    ],
+    "attack.t1070": [
+        "Defense-evasion"
+    ],
+    "attack.t1048.001": [
+        "Exfiltration"
+    ],
+    "attack.t1137.001": [
+        "Persistence"
+    ],
+    "attack.t1583.003": [
+        "Resource-development"
+    ],
+    "attack.t1213.001": [
+        "Collection"
+    ],
+    "attack.t1550.003": [
+        "Defense-evasion",
+        "Lateral-movement"
+    ],
+    "attack.t1609": [
+        "Execution"
+    ],
+    "attack.t1083": [
+        "Discovery"
+    ],
+    "attack.t1568": [
+        "Command-and-control"
+    ],
+    "attack.t1036.004": [
+        "Defense-evasion"
+    ],
+    "attack.t1055.004": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1020.001": [
+        "Exfiltration"
+    ],
+    "attack.t1138": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1647": [
+        "Defense-evasion"
+    ],
+    "attack.t1546.009": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1191": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1188": [
+        "Command-and-control"
+    ],
+    "attack.t1114.003": [
+        "Collection"
+    ],
+    "attack.t1074": [
+        "Collection"
+    ],
+    "attack.t1649": [
+        "Credential-access"
+    ],
+    "attack.t1098.005": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1049": [
+        "Discovery"
+    ],
+    "attack.t1584": [
+        "Resource-development"
+    ],
+    "attack.t1553.005": [
+        "Defense-evasion"
+    ],
+    "attack.t1600.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1542": [
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1064": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1612": [
+        "Defense-evasion"
+    ],
+    "attack.t1051": [
+        "Lateral-movement"
+    ],
+    "attack.t1055.002": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1218.012": [
+        "Defense-evasion"
+    ],
+    "attack.t1586": [
+        "Resource-development"
+    ],
+    "attack.t1569.001": [
+        "Execution"
+    ],
+    "attack.t1584.005": [
+        "Resource-development"
+    ],
+    "attack.t1059.008": [
+        "Execution"
+    ],
+    "attack.t1552.003": [
+        "Credential-access"
+    ],
+    "attack.t1562.010": [
+        "Defense-evasion"
+    ],
+    "attack.t1559.003": [
+        "Execution"
+    ],
+    "attack.t1497": [
+        "Defense-evasion",
+        "Discovery"
+    ],
+    "attack.t1102": [
+        "Command-and-control"
+    ],
+    "attack.t1552.001": [
+        "Credential-access"
+    ],
+    "attack.t1568.003": [
+        "Command-and-control"
+    ],
+    "attack.t1218.005": [
+        "Defense-evasion"
+    ],
+    "attack.t1547.015": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1608": [
+        "Resource-development"
+    ],
+    "attack.t1608.005": [
+        "Resource-development"
+    ],
+    "attack.t1104": [
+        "Command-and-control"
+    ],
+    "attack.t1657": [
+        "Impact"
+    ],
+    "attack.t1480": [
+        "Defense-evasion"
+    ],
+    "attack.t1619": [
+        "Discovery"
+    ],
+    "attack.t1606.001": [
+        "Credential-access"
+    ],
+    "attack.t1654": [
+        "Discovery"
+    ],
+    "attack.t1134.001": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1567.001": [
+        "Exfiltration"
+    ],
+    "attack.t1021.007": [
+        "Lateral-movement"
+    ],
+    "attack.t1205.001": [
+        "Defense-evasion",
+        "Persistence",
+        "Command-and-control"
+    ],
+    "attack.t1027.012": [
+        "Defense-evasion"
+    ],
+    "attack.t1583.006": [
+        "Resource-development"
+    ],
+    "attack.t1528": [
+        "Credential-access"
+    ],
+    "attack.t1598.002": [
+        "Reconnaissance"
+    ],
+    "attack.t1098.001": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1204": [
+        "Execution"
+    ],
+    "attack.t1491.001": [
+        "Impact"
+    ],
+    "attack.t1564.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1134.003": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1552.006": [
+        "Credential-access"
+    ],
+    "attack.t1196": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1048.002": [
+        "Exfiltration"
+    ],
+    "attack.t1087.004": [
+        "Discovery"
+    ],
+    "attack.t1057": [
+        "Discovery"
+    ],
+    "attack.t1562.003": [
+        "Defense-evasion"
+    ],
+    "attack.t1053.004": [
+        "Execution",
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1556.008": [
+        "Credential-access",
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1546.003": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1596.004": [
+        "Reconnaissance"
+    ],
+    "attack.t1497.002": [
+        "Defense-evasion",
+        "Discovery"
+    ],
+    "attack.t1141": [
+        "Credential-access"
+    ],
+    "attack.t1496.004": [
+        "Impact"
+    ],
+    "attack.t1585.003": [
+        "Resource-development"
+    ],
+    "attack.t1072": [
+        "Execution",
+        "Lateral-movement"
+    ],
+    "attack.t1041": [
+        "Exfiltration"
+    ],
+    "attack.t1134.004": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1591": [
+        "Reconnaissance"
+    ],
+    "attack.t1060": [
+        "Persistence"
+    ],
+    "attack.t1606": [
+        "Credential-access"
+    ],
+    "attack.t1621": [
+        "Credential-access"
+    ],
+    "attack.t1554": [
+        "Persistence"
+    ],
+    "attack.t1552.008": [
+        "Credential-access"
+    ],
+    "attack.t1059.001": [
+        "Execution"
+    ],
+    "attack.t1023": [
+        "Persistence"
+    ],
+    "attack.t1546.001": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1055.014": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1026": [
+        "Command-and-control"
+    ],
+    "attack.t1071.002": [
+        "Command-and-control"
+    ],
+    "attack.t1122": [
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1015": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1212": [
+        "Credential-access"
+    ],
+    "attack.t1546.014": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1102.003": [
+        "Command-and-control"
+    ],
+    "attack.t1590": [
+        "Reconnaissance"
+    ],
+    "attack.t1210": [
+        "Lateral-movement"
+    ],
+    "attack.t1502": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1142": [
+        "Credential-access"
+    ],
+    "attack.t1534": [
+        "Lateral-movement"
+    ],
+    "attack.t1169": [
+        "Privilege-escalation"
+    ],
+    "attack.t1574.010": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1547.001": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1199": [
+        "Initial-access"
+    ],
+    "attack.t1136.003": [
+        "Persistence"
+    ],
+    "attack.t1069.001": [
+        "Discovery"
+    ],
+    "attack.t1149": [
+        "Defense-evasion"
+    ],
+    "attack.t1593": [
+        "Reconnaissance"
+    ],
+    "attack.t1098": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1170": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1048": [
+        "Exfiltration"
+    ],
+    "attack.t1547.006": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1056.002": [
+        "Collection",
+        "Credential-access"
+    ],
+    "attack.t1097": [
+        "Lateral-movement"
+    ],
+    "attack.t1588.002": [
+        "Resource-development"
+    ],
+    "attack.t1052.001": [
+        "Exfiltration"
+    ],
+    "attack.t1574.013": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1597": [
+        "Reconnaissance"
+    ],
+    "attack.t1053.006": [
+        "Execution",
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1566": [
+        "Initial-access"
+    ],
+    "attack.t1061": [
+        "Execution"
+    ],
+    "attack.t1542.004": [
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1218.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1496.001": [
+        "Impact"
+    ],
+    "attack.t1070.005": [
+        "Defense-evasion"
+    ],
+    "attack.t1090.003": [
+        "Command-and-control"
+    ],
+    "attack.t1110": [
+        "Credential-access"
+    ],
+    "attack.t1059.004": [
+        "Execution"
+    ],
+    "attack.t1137.003": [
+        "Persistence"
+    ],
+    "attack.t1157": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1562.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1565": [
+        "Impact"
+    ],
+    "attack.t1559": [
+        "Execution"
+    ],
+    "attack.t1001": [
+        "Command-and-control"
+    ],
+    "attack.t1039": [
+        "Collection"
+    ],
+    "attack.t1584.006": [
+        "Resource-development"
+    ],
+    "attack.t1601": [
+        "Defense-evasion"
+    ],
+    "attack.t1574": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1059.011": [
+        "Execution"
+    ],
+    "attack.t1027.005": [
+        "Defense-evasion"
+    ],
+    "attack.t1204.003": [
+        "Execution"
+    ],
+    "attack.t1543.005": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1078": [
+        "Defense-evasion",
+        "Persistence",
+        "Privilege-escalation",
+        "Initial-access"
+    ],
+    "attack.t1571": [
+        "Command-and-control"
+    ],
+    "attack.t1585.001": [
+        "Resource-development"
+    ],
+    "attack.t1073": [
+        "Defense-evasion"
+    ],
+    "attack.t1055.012": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1068": [
+        "Privilege-escalation"
+    ],
+    "attack.t1564.009": [
+        "Defense-evasion"
+    ],
+    "attack.t1531": [
+        "Impact"
+    ],
+    "attack.t1110.004": [
+        "Credential-access"
+    ],
+    "attack.t1208": [
+        "Credential-access"
+    ],
+    "attack.t1027": [
+        "Defense-evasion"
+    ],
+    "attack.t1556.006": [
+        "Credential-access",
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1114.002": [
+        "Collection"
+    ],
+    "attack.t1505.004": [
+        "Persistence"
+    ],
+    "attack.t1036.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1564.006": [
+        "Defense-evasion"
+    ],
+    "attack.t1154": [
+        "Execution",
+        "Persistence"
+    ],
+    "attack.t1027.014": [
+        "Defense-evasion"
+    ],
+    "attack.t1201": [
+        "Discovery"
+    ],
+    "attack.t1546": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1546.004": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1187": [
+        "Credential-access"
+    ],
+    "attack.t1134.005": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1599": [
+        "Defense-evasion"
+    ],
+    "attack.t1486": [
+        "Impact"
+    ],
+    "attack.t1488": [
+        "Impact"
+    ],
+    "attack.t1553": [
+        "Defense-evasion"
+    ],
+    "attack.t1548.004": [
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1592.003": [
+        "Reconnaissance"
+    ],
+    "attack.t1573": [
+        "Command-and-control"
+    ],
+    "attack.t1174": [
+        "Credential-access"
+    ],
+    "attack.t1547.002": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1218.010": [
+        "Defense-evasion"
+    ],
+    "attack.t1002": [
+        "Exfiltration"
+    ],
+    "attack.t1567.003": [
+        "Exfiltration"
+    ],
+    "attack.t1081": [
+        "Credential-access"
+    ],
+    "attack.t1592.002": [
+        "Reconnaissance"
+    ],
+    "attack.t1128": [
+        "Persistence"
+    ],
+    "attack.t1056": [
+        "Collection",
+        "Credential-access"
+    ],
+    "attack.t1566.004": [
+        "Initial-access"
+    ],
+    "attack.t1587.004": [
+        "Resource-development"
+    ],
+    "attack.t1593.001": [
+        "Reconnaissance"
+    ],
+    "attack.t1213.004": [
+        "Collection"
+    ],
+    "attack.t1546.015": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1589.001": [
+        "Reconnaissance"
+    ],
+    "attack.t1195.002": [
+        "Initial-access"
+    ],
+    "attack.t1036.003": [
+        "Defense-evasion"
+    ],
+    "attack.t1102.002": [
+        "Command-and-control"
+    ],
+    "attack.t1203": [
+        "Execution"
+    ],
+    "attack.t1595.003": [
+        "Reconnaissance"
+    ],
+    "attack.t1562.011": [
+        "Defense-evasion"
+    ],
+    "attack.t1137.004": [
+        "Persistence"
+    ],
+    "attack.t1573.002": [
+        "Command-and-control"
+    ],
+    "attack.t1567.002": [
+        "Exfiltration"
+    ],
+    "attack.t1570": [
+        "Lateral-movement"
+    ],
+    "attack.t1574.009": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1608.003": [
+        "Resource-development"
+    ],
+    "attack.t1168": [
+        "Persistence",
+        "Execution"
+    ],
+    "attack.t1166": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1037.005": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1100": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1186": [
+        "Defense-evasion"
+    ],
+    "attack.t1184": [
+        "Lateral-movement"
+    ],
+    "attack.t1614.001": [
+        "Discovery"
+    ],
+    "attack.t1095": [
+        "Command-and-control"
+    ],
+    "attack.t1075": [
+        "Lateral-movement"
+    ],
+    "attack.t1027.003": [
+        "Defense-evasion"
+    ],
+    "attack.t1584.002": [
+        "Resource-development"
+    ],
+    "attack.t1001.003": [
+        "Command-and-control"
+    ],
+    "attack.t1012": [
+        "Discovery"
+    ],
+    "attack.t1030": [
+        "Exfiltration"
+    ],
+    "attack.t1028": [
+        "Execution",
+        "Lateral-movement"
+    ],
+    "attack.t1550.004": [
+        "Defense-evasion",
+        "Lateral-movement"
+    ],
+    "attack.t1078.002": [
+        "Defense-evasion",
+        "Persistence",
+        "Privilege-escalation",
+        "Initial-access"
+    ],
+    "attack.t1218.009": [
+        "Defense-evasion"
+    ],
+    "attack.t1034": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1506": [
+        "Defense-evasion",
+        "Lateral-movement"
+    ],
+    "attack.t1553.004": [
+        "Defense-evasion"
+    ],
+    "attack.t1037.003": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1499": [
+        "Impact"
+    ],
+    "attack.t1027.004": [
+        "Defense-evasion"
+    ],
+    "attack.t1065": [
+        "Command-and-control"
+    ],
+    "attack.t1614": [
+        "Discovery"
+    ],
+    "attack.t1564.007": [
+        "Defense-evasion"
+    ],
+    "attack.t1197": [
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1127.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1656": [
+        "Defense-evasion"
+    ],
+    "attack.t1578.005": [
+        "Defense-evasion"
+    ],
+    "attack.t1088": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1494": [
+        "Impact"
+    ],
+    "attack.t1090.004": [
+        "Command-and-control"
+    ],
+    "attack.t1557.002": [
+        "Credential-access",
+        "Collection"
+    ],
+    "attack.t1562.008": [
+        "Defense-evasion"
+    ],
+    "attack.t1518.001": [
+        "Discovery"
+    ],
+    "attack.t1564.003": [
+        "Defense-evasion"
+    ],
+    "attack.t1493": [
+        "Impact"
+    ],
+    "attack.t1127.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1059.006": [
+        "Execution"
+    ],
+    "attack.t1070.010": [
+        "Defense-evasion"
+    ],
+    "attack.t1591.004": [
+        "Reconnaissance"
+    ],
+    "attack.t1132": [
+        "Command-and-control"
+    ],
+    "attack.t1546.010": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1598": [
+        "Reconnaissance"
+    ],
+    "attack.t1496": [
+        "Impact"
+    ],
+    "attack.t1585": [
+        "Resource-development"
+    ],
+    "attack.t1588": [
+        "Resource-development"
+    ],
+    "attack.t1546.002": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1147": [
+        "Defense-evasion"
+    ],
+    "attack.t1556.009": [
+        "Credential-access",
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1578.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1500": [
+        "Defense-evasion"
+    ],
+    "attack.t1555.006": [
+        "Credential-access"
+    ],
+    "attack.t1213.003": [
+        "Collection"
+    ],
+    "attack.t1565.002": [
+        "Impact"
+    ],
+    "attack.t1003.008": [
+        "Credential-access"
+    ],
+    "attack.t1543.001": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1569": [
+        "Execution"
+    ],
+    "attack.t1059.003": [
+        "Execution"
+    ],
+    "attack.t1055.009": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1223": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1650": [
+        "Resource-development"
+    ],
+    "attack.t1601.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1558.002": [
+        "Credential-access"
+    ],
+    "attack.t1213": [
+        "Collection"
+    ],
+    "attack.t1070.009": [
+        "Defense-evasion"
+    ],
+    "attack.t1146": [
+        "Defense-evasion"
+    ],
+    "attack.t1555.004": [
+        "Credential-access"
+    ],
+    "attack.t1036.010": [
+        "Defense-evasion"
+    ],
+    "attack.t1519": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1194": [
+        "Initial-access"
+    ],
+    "attack.t1200": [
+        "Initial-access"
+    ],
+    "attack.t1505": [
+        "Persistence"
+    ],
+    "attack.t1485": [
+        "Impact"
+    ],
+    "attack.t1132.002": [
+        "Command-and-control"
+    ],
+    "attack.t1556.001": [
+        "Credential-access",
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1537": [
+        "Exfiltration"
+    ],
+    "attack.t1027.006": [
+        "Defense-evasion"
+    ],
+    "attack.t1556.005": [
+        "Credential-access",
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1027.010": [
+        "Defense-evasion"
+    ],
+    "attack.t1130": [
+        "Defense-evasion"
+    ],
+    "attack.t1022": [
+        "Exfiltration"
+    ],
+    "attack.t1070.004": [
+        "Defense-evasion"
+    ],
+    "attack.t1189": [
+        "Initial-access"
+    ],
+    "attack.t1498": [
+        "Impact"
+    ],
+    "attack.t1651": [
+        "Execution"
+    ],
+    "attack.t1546.016": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1595.001": [
+        "Reconnaissance"
+    ],
+    "attack.t1158": [
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1221": [
+        "Defense-evasion"
+    ],
+    "attack.t1037.004": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1134": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1209": [
+        "Persistence"
+    ],
+    "attack.t1111": [
+        "Credential-access"
+    ],
+    "attack.t1159": [
+        "Persistence"
+    ],
+    "attack.t1027.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1584.007": [
+        "Resource-development"
+    ],
+    "attack.t1071.001": [
+        "Command-and-control"
+    ],
+    "attack.t1059.005": [
+        "Execution"
+    ],
+    "attack.t1564.005": [
+        "Defense-evasion"
+    ],
+    "attack.t1543.002": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1563.002": [
+        "Lateral-movement"
+    ],
+    "attack.t1136": [
+        "Persistence"
+    ],
+    "attack.t1547.013": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1584.004": [
+        "Resource-development"
+    ],
+    "attack.t1526": [
+        "Discovery"
+    ],
+    "attack.t1151": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1018": [
+        "Discovery"
+    ],
+    "attack.t1046": [
+        "Discovery"
+    ],
+    "attack.t1590.001": [
+        "Reconnaissance"
+    ],
+    "attack.t1518": [
+        "Discovery"
+    ],
+    "attack.t1538": [
+        "Discovery"
+    ],
+    "attack.t1055.005": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1622": [
+        "Defense-evasion",
+        "Discovery"
+    ],
+    "attack.t1036.006": [
+        "Defense-evasion"
+    ],
+    "attack.t1547.007": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1608.006": [
+        "Resource-development"
+    ],
+    "attack.t1550.002": [
+        "Defense-evasion",
+        "Lateral-movement"
+    ],
+    "attack.t1052": [
+        "Exfiltration"
+    ],
+    "attack.t1574.002": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1105": [
+        "Command-and-control"
+    ],
+    "attack.t1216.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1098.002": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1588.003": [
+        "Resource-development"
+    ],
+    "attack.t1126": [
+        "Defense-evasion"
+    ],
+    "attack.t1648": [
+        "Execution"
+    ],
+    "attack.t1548.006": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1084": [
+        "Persistence"
+    ],
+    "attack.t1160": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1055.008": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1653": [
+        "Persistence"
+    ],
+    "attack.t1027.007": [
+        "Defense-evasion"
+    ],
+    "attack.t1021.001": [
+        "Lateral-movement"
+    ],
+    "attack.t1037.001": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1055.015": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1665": [
+        "Command-and-control"
+    ],
+    "attack.t1484": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1220": [
+        "Defense-evasion"
+    ],
+    "attack.t1596.005": [
+        "Reconnaissance"
+    ],
+    "attack.t1564.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1578.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1591.001": [
+        "Reconnaissance"
+    ],
+    "attack.t1137.002": [
+        "Persistence"
+    ],
+    "attack.t1587": [
+        "Resource-development"
+    ],
+    "attack.t1173": [
+        "Execution"
+    ],
+    "attack.t1003.003": [
+        "Credential-access"
+    ],
+    "attack.t1602.001": [
+        "Collection"
+    ],
+    "attack.t1001.002": [
+        "Command-and-control"
+    ],
+    "attack.t1204.001": [
+        "Execution"
+    ],
+    "attack.t1550.001": [
+        "Defense-evasion",
+        "Lateral-movement"
+    ],
+    "attack.t1547.008": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1569.002": [
+        "Execution"
+    ],
+    "attack.t1078.004": [
+        "Defense-evasion",
+        "Persistence",
+        "Privilege-escalation",
+        "Initial-access"
+    ],
+    "attack.t1480.001": [
+        "Defense-evasion"
+    ],
+    "attack.t1008": [
+        "Command-and-control"
+    ],
+    "attack.t1564.004": [
+        "Defense-evasion"
+    ],
+    "attack.t1558.003": [
+        "Credential-access"
+    ],
+    "attack.t1096": [
+        "Defense-evasion"
+    ],
+    "attack.t1003.006": [
+        "Credential-access"
+    ],
+    "attack.t1124": [
+        "Discovery"
+    ],
+    "attack.t1053.002": [
+        "Execution",
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1035": [
+        "Execution"
+    ],
+    "attack.t1055.001": [
+        "Defense-evasion",
+        "Privilege-escalation"
+    ],
+    "attack.t1086": [
+        "Execution"
+    ],
+    "attack.t1588.005": [
+        "Resource-development"
+    ],
+    "attack.t1556": [
+        "Credential-access",
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1546.017": [
+        "Persistence",
+        "Privilege-escalation"
+    ],
+    "attack.t1056.004": [
+        "Collection",
+        "Credential-access"
+    ],
+    "attack.t1495": [
+        "Impact"
+    ],
+    "attack.t1490": [
+        "Impact"
+    ],
+    "attack.t1546.007": [
+        "Privilege-escalation",
+        "Persistence"
+    ],
+    "attack.t1566.003": [
+        "Initial-access"
+    ],
+    "attack.t1090.001": [
+        "Command-and-control"
+    ],
+    "attack.t1216": [
+        "Defense-evasion"
+    ],
+    "attack.t1094": [
+        "Command-and-control"
+    ],
+    "attack.t1102.001": [
+        "Command-and-control"
+    ],
+    "attack.t1118": [
+        "Defense-evasion",
+        "Execution"
+    ],
+    "attack.t1001.001": [
+        "Command-and-control"
+    ],
+    "attack.t1598.001": [
+        "Reconnaissance"
+    ],
+    "attack.t1043": [
+        "Command-and-control"
+    ],
+    "attack.t1552.007": [
+        "Credential-access"
+    ],
+    "attack.t1584.001": [
+        "Resource-development"
+    ],
+    "attack.t1505.001": [
+        "Persistence"
+    ],
+    "attack.t1556.004": [
+        "Credential-access",
+        "Defense-evasion",
+        "Persistence"
+    ],
+    "attack.t1561.001": [
+        "Impact"
+    ],
+    "attack.t1213.005": [
+        "Collection"
+    ],
+    "attack.t1048.003": [
+        "Exfiltration"
+    ],
+    "attack.t1574.004": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ],
+    "attack.t1601.002": [
+        "Defense-evasion"
+    ],
+    "attack.t1078.003": [
+        "Defense-evasion",
+        "Persistence",
+        "Privilege-escalation",
+        "Initial-access"
+    ],
+    "attack.t1211": [
+        "Defense-evasion"
+    ],
+    "attack.t1127": [
+        "Defense-evasion"
+    ],
+    "attack.t1529": [
+        "Impact"
+    ],
+    "attack.t1218.014": [
+        "Defense-evasion"
+    ],
+    "attack.t1564.010": [
+        "Defense-evasion"
+    ],
+    "attack.t1077": [
+        "Lateral-movement"
+    ],
+    "attack.t1574.012": [
+        "Persistence",
+        "Privilege-escalation",
+        "Defense-evasion"
+    ]
+}
