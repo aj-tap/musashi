@@ -96,6 +96,7 @@ transformations:
           - ObjectName
           - ObjectType
           - HandleId
+          - Image
           - AccessMask
           - ShareName
           - ShareLocalPath

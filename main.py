@@ -26,6 +26,7 @@ import json
 from evtx import PyEvtxParser
 import yaml
 from sigma.processing.pipeline import ProcessingPipeline
+from openai import OpenAI
 
 MITRE_CACHE_FILE = "mitre_attack_mapping.json"
 
@@ -49,12 +50,14 @@ def flatten_json(nested_json, prefix=""):
     return flattened
 
 class Triage:
-    def __init__(self, log_path, result_path, log_format, sigma_rule_path="sigma_rules/rules/windows/"):
+    def __init__(self, log_path, result_path, log_format, sigma_rule_path="sigma_rules/rules/windows/", openai_api=None):
         self.output_path = result_path
         self.log_path = log_path
         self.sigma_rule_path = sigma_rule_path
         self.superdb = SuperDBAPI()
         self.log_format = log_format
+        self.log_summary = ""
+        self.openai_api = openai_api
         
         # If the provided sigma_rule_path is a directory, append the pattern
         if os.path.isdir(sigma_rule_path):
@@ -339,6 +342,10 @@ class Triage:
             merged_output = os.path.join(self.output_path, "all-sigma-results.csv")
             merged_df.to_csv(merged_output, index=False)
             print(f"All sigma results merged and saved to {merged_output}")
+            # Ingest the all result into superdb lake
+            data = merged_df.to_csv(index=False)
+            self.superdb.create_pool(name='sigmaresults', layout_order='asc', thresh=None)            
+            response = self.superdb.load_data_to_branch('sigmaresults', 'main', data, csv_delim=',')
     
         if rule_hit_count:
             self.display_ascii_stats(rule_hit_count, mitre_timeline)
@@ -390,6 +397,7 @@ class Triage:
         """
         Displays Sigma rule hit counts as a sorted ASCII table.
         Also categorizes MITRE ATT&CK detections under their respective tactics.
+        Stores the results in `self.stats` in a compact format.
         """
         print("\n=== Sigma Detection Results Summary ===")
     
@@ -402,15 +410,13 @@ class Triage:
     
         MAX_BAR_WIDTH = 50  # Normalize bar widths
     
+        sigma_summary = []
         for rule, count in sorted_hits:
             bar_length = int((count / max_count) * MAX_BAR_WIDTH)
             bar = "█" * bar_length
             print(f"{rule.ljust(max_label_length)} | {bar} ({count})")
+            sigma_summary.append(f"{rule}: {count}")  # Store for compact stats
     
-        # Print table
-        #print("\n" + tabulate(sorted_hits, headers=["Sigma Rule", "Hits"], tablefmt="grid"))
-    
-        # === MITRE ATT&CK Timeline ===
         print("\n=== MITRE ATT&CK Detection Timeline ===")
     
         # Load MITRE ATT&CK mappings
@@ -424,23 +430,22 @@ class Triage:
                 technique = str(technique)  # Convert to string if needed
             
             technique = technique.lower()  # Normalize
-    
-            # Find associated tactic(s) and exclude unmapped techniques
             tactics = tactic_mapping.get(technique)
             if not tactics:
-                continue  # Skip techniques that have no mapped tactic
+                continue  # Skip unmapped techniques
             
             for tactic in tactics:
                 tactic_grouped[tactic][technique].extend(rules)
     
         # Sort tactics by total detections
         sorted_tactics = sorted(
-            tactic_grouped.items(), 
-            key=lambda x: sum(len(v) for v in x[1].values()), 
+            tactic_grouped.items(),
+            key=lambda x: sum(len(v) for v in x[1].values()),
             reverse=True
         )
     
         mitre_table = []
+        mitre_summary = []
     
         for tactic, techniques in sorted_tactics:
             total_detections = sum(len(rules) for rules in techniques.values())
@@ -451,11 +456,97 @@ class Triage:
             for technique, rules in sorted_techniques:
                 for rule in rules:
                     mitre_table.append([tactic.capitalize(), technique, rule])
+                    mitre_summary.append(f"{tactic}>{technique}>{rule}")  # Store for compact stats
     
         if mitre_table:
             print("\n" + tabulate(mitre_table, headers=["Tactic", "Technique", "Rule"], tablefmt="grid"))
         else:
             print("No mapped MITRE ATT&CK detections.")
+    
+        # Store optimized stats string
+        self.log_summary = f"Sigma: {', '.join(sigma_summary)} | MITRE: {', '.join(mitre_summary)}"    
+        #print(self.log_summary) 
+
+    def ai_hunt(self):
+        client = OpenAI(api_key=self.openai_api)        
+        completion = client.chat.completions.create(
+            model="gpt-4o",
+            store=True,
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"""
+            You are a Senior Analyst specializing in advanced threat hunting using large-scale log analysis.  
+            
+            ### Log Summary of Sigma Scan Results:  
+            {self.log_summary}  
+            
+            ### Task:  
+            1. Analyze the Sigma scan results and identify potential missed threats.  
+            2. Generate a **concise Sigma rule in YAML format** to continue the hunt.  
+            3. The generated Sigma rule will be **used directly for log searches**, so ensure it is:  
+               - **Minimal but effective** (no excessive conditions).  
+               - **Strictly formatted in YAML** (no explanations).
+               - **Only include the following fields:**
+                 - `title`                 
+                 - `logsource`
+                 - `detection`
+               - **Do NOT include any unnecessary metadata.**  
+               - **Do NOT wrap the output in triple backticks (` ```yaml `). Output plain YAML.**              
+            ### **Output Format:**  
+            - **YAML only** (No additional text, comments, or explanations).  
+            - The rule must be **actionable and directly usable** in further log analysis.  
+            """
+                }
+            ]
+        )
+    
+        return completion.choices[0].message.content  # Returns only the YAML rule
+
+    def perform_additional_detections(self):
+        print("\n === AI Assistance Threat hunt ===")
+        #print("\n Generated Sigma detection: ")
+        sigma_generated = self.ai_hunt()
+        print(sigma_generated)
+        sigma_rule = SigmaRule.from_yaml(sigma_generated)
+        backend = superDBBackend()        
+
+        if self.log_format == "azure":
+            pipeline = azure_monitor_pipeline()
+            pipeline.apply(sigma_rule)
+        elif self.log_format == "defender":
+            pipeline = microsoft_xdr_pipeline()
+            pipeline.apply(sigma_rule)
+        elif self.log_format == "cortex":
+            pipeline = CortexXDR_pipeline()
+            pipeline.apply(sigma_rule)
+        elif self.log_format == "carbonblackresponse":
+            pipeline = CarbonBlackResponse_pipeline()
+            pipeline.apply(sigma_rule)
+        elif self.log_format == "carbonblack":
+            pipeline = CarbonBlack_pipeline()
+            pipeline.apply(sigma_rule)
+        elif self.log_format == "winevtx":
+            # Load YAML file properly
+            with open("pipeline/windows_mapping_superdb.yml", "r") as f:
+                yaml_content = yaml.safe_load(f)  # Parses YAML into a Python dictionary
+            # Now pass the parsed YAML content
+            pipeline = ProcessingPipeline.from_dict(yaml_content)                                        
+            pipeline.apply(sigma_rule)
+        else:
+            pipeline = None
+                
+        converted_rule = superDBBackend().convert_rule(sigma_rule)                                            
+        fin_query = f"from logs | {converted_rule[0]}"
+        print("AI generated query rule: " + fin_query)
+        res = self.superdb.execute_query(query=fin_query)
+        print("AI Query Result: \n")
+        print(res)
+        if res:
+            df = pd.DataFrame(res)
+            df["SigmaRule"] = rule_title  
+            csv_output = os.path.join(self.output_path, f"AI - {rule_title}.csv")
+            df.to_csv(csv_output, index=False)                    
 
     def init_lake(self):
         """Initializes the data lake using Zed commands."""
@@ -508,6 +599,8 @@ class Triage:
                 self.ingest_data(cleaned_file)
                 self.extract_iocs()
                 self.perform_detections()
+                if self.openai_api:
+                    self.perform_additional_detections()                                       
                 print("Triage completed successfully.")
             finally:
                 os.remove(cleaned_file)                
@@ -523,6 +616,7 @@ if __name__ == "__main__":
     parser.add_argument("-o", "--output_path", type=str, required=True, help="Set output directory results")
     parser.add_argument("-s", "--sigma_rule_path", type=str, required=False, help="Set Sigma rules directory or file path (If no specific Sigma rules directory or file path is set, the default path is sigma_rules/rules/windows/)")
     parser.add_argument("-lf", "--log_format", type=str, required=False, help="Set input format (e.g., winevtx, azure, defender,  cortex, carbonblack)")
+    parser.add_argument("-a", "--openai", type=str, required=False, help="Supply openai api key to perform additional detections")
 
     args = parser.parse_args()
  
@@ -532,6 +626,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     if args.log_format and args.input_path is not None:
-        invoker.add_command(Triage(args.input_path, args.output_path, args.log_format, args.sigma_rule_path))
+        invoker.add_command(Triage(args.input_path, args.output_path, args.log_format, args.sigma_rule_path, args.openai))
 
     invoker.run()

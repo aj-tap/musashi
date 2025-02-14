@@ -46,7 +46,8 @@ Arguments
 ```
 -i, --input_path → (Required) Path to the log directory
 -o, --output_path → (Required) Path to the output directory for results
--lf, --log_format → (Required) Log format (e.g., azure, defender, cortex, carbonblack)
+-lf, --log_format → (Required) Log format (e.g., winevtx, azure, defender, cortex, carbonblack)
+-a,  --openai → (Optional) Supply openai api key to perform additional detections
 ```
 
 ### Output
