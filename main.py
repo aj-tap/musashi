@@ -23,15 +23,48 @@ import zipfile
 import re
 from collections import defaultdict
 import json
+from evtx import PyEvtxParser
+import yaml
+from sigma.processing.pipeline import ProcessingPipeline
 
 MITRE_CACHE_FILE = "mitre_attack_mapping.json"
 
+def flatten_json(nested_json, prefix=""):
+    """
+    Recursively flattens a nested JSON dictionary.
+    """
+    flattened = {}
+    if isinstance(nested_json, dict):
+        for key, value in nested_json.items():
+            new_key = f"{prefix}{key}" if prefix else key
+            if isinstance(value, dict):
+                flattened.update(flatten_json(value, new_key + "_"))
+            elif isinstance(value, list):
+                # Convert list values to a comma-separated string
+                flattened[new_key] = ", ".join(map(str, value))
+            else:
+                flattened[new_key] = value
+    else:
+        flattened[prefix] = nested_json
+    return flattened
+
 class Triage:
-    def __init__(self, log_path, result_path, log_format):
+    def __init__(self, log_path, result_path, log_format, sigma_rule_path="sigma_rules/rules/windows/"):
         self.output_path = result_path
         self.log_path = log_path
+        self.sigma_rule_path = sigma_rule_path
         self.superdb = SuperDBAPI()
         self.log_format = log_format
+        
+        # If the provided sigma_rule_path is a directory, append the pattern
+        if os.path.isdir(sigma_rule_path):
+            self.sigma_rule_path = os.path.join(sigma_rule_path, "**", "*.yml")
+        else:
+            self.sigma_rule_path = sigma_rule_path  # Assume it's already a valid pattern
+        # Check if the path exists
+        if not os.path.exists(sigma_rule_path):
+            raise ValueError(f"Provided sigma_rule_path '{sigma_rule_path}' does not exist!")
+        print(f"Using Sigma rules path: {self.sigma_rule_path}")
 
     def clean_column_names(self, df):
         """Removes spaces from column names."""
@@ -45,16 +78,39 @@ class Triage:
             
             if file_ext == ".csv":
                 df = pd.read_csv(self.log_path, low_memory=False)
+                df = self.clean_column_names(df)
             elif file_ext == ".tsv":
                 df = pd.read_csv(self.log_path, sep="\t", low_memory=False)
+                df = self.clean_column_names(df)
             elif file_ext == ".json":
                 df = pd.read_json(self.log_path, low_memory=False)
+                df = self.clean_column_names(df)
+            elif file_ext == ".evtx":
+                records_list = []
+                parser = PyEvtxParser(self.log_path)
+                for record in parser.records_json():  # Get JSON format records
+                    event_id = record["event_record_id"]
+                    timestamp = record["timestamp"]            
+                    try:
+                        # Load JSON from 'data' field
+                        event_data = json.loads(record["data"])["Event"]
+            
+                        # Flatten the nested JSON structure dynamically
+                        flattened_event = flatten_json(event_data)
+                        
+                        # Add Event Record ID and Timestamp
+                        flattened_event["Event Record ID"] = event_id
+                        flattened_event["Timestamp"] = timestamp
+                        
+                        records_list.append(flattened_event)
+            
+                    except json.JSONDecodeError:
+                        print(f"Error decoding JSON for Event Record ID: {event_id}")
+                df = pd.DataFrame(records_list)
             else:
-                print("Unsupported file format. Only CSV, TSV, and JSON are allowed.")
+                print("Unsupported file format. Only Evtx, CSV, TSV, and JSON are allowed.")
                 return None
-
-            df = self.clean_column_names(df)
-
+            
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=file_ext)
             if file_ext == ".json":
                 df.to_json(temp_file.name, orient="records", lines=True)
@@ -188,7 +244,8 @@ class Triage:
 
     def get_sigma_rules(self):
         """Loads and converts Sigma rules in parallel."""
-        sigma_rule_files = glob.glob("./sigma_rules/rules/windows/**/*.yml", recursive=True)
+        #sigma_rule_files = glob.glob("./sigma_rules/rules/windows/**/*.yml", recursive=True)
+        sigma_rule_files = glob.glob(self.sigma_rule_path, recursive=True)        
         converted_rules = []
         loaded_count = 0  # Counter for successfully loaded rules
     
@@ -201,18 +258,29 @@ class Triage:
     
                 if self.log_format == "azure":
                     pipeline = azure_monitor_pipeline()
+                    pipeline.apply(sigma_rule)
                 elif self.log_format == "defender":
                     pipeline = microsoft_xdr_pipeline()
+                    pipeline.apply(sigma_rule)
                 elif self.log_format == "cortex":
                     pipeline = CortexXDR_pipeline()
+                    pipeline.apply(sigma_rule)
                 elif self.log_format == "carbonblackresponse":
                     pipeline = CarbonBlackResponse_pipeline()
+                    pipeline.apply(sigma_rule)
                 elif self.log_format == "carbonblack":
                     pipeline = CarbonBlack_pipeline()
+                    pipeline.apply(sigma_rule)
+                elif self.log_format == "winevtx":
+                    # Load YAML file properly
+                    with open("pipeline/windows_mapping_superdb.yml", "r") as f:
+                        yaml_content = yaml.safe_load(f)  # Parses YAML into a Python dictionary
+                    # Now pass the parsed YAML content
+                    pipeline = ProcessingPipeline.from_dict(yaml_content)                                        
+                    pipeline.apply(sigma_rule)
                 else:
                     pipeline = None
-    
-                pipeline.apply(sigma_rule)
+                    
                 converted_rule = superDBBackend().convert_rule(sigma_rule)
                 
                 loaded_count += 1  # Increment successful rule load counter
@@ -453,7 +521,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog='Musashi: ', description="Musashi Sigma-Detection Logs & Rapid Triage Tool")
     parser.add_argument("-i", "--input_path", required=True, type=str, help="Set log directory")
     parser.add_argument("-o", "--output_path", type=str, required=True, help="Set output directory results")
-    parser.add_argument("-lf", "--log_format", type=str, required=True, help="Set input format (e.g., azure, defender,  cortex, carbonblack)")
+    parser.add_argument("-s", "--sigma_rule_path", type=str, required=False, help="Set Sigma rules directory or file path (If no specific Sigma rules directory or file path is set, the default path is sigma_rules/rules/windows/)")
+    parser.add_argument("-lf", "--log_format", type=str, required=False, help="Set input format (e.g., winevtx, azure, defender,  cortex, carbonblack)")
 
     args = parser.parse_args()
  
@@ -463,6 +532,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     if args.log_format and args.input_path is not None:
-        invoker.add_command(Triage(args.input_path, args.output_path, args.log_format))
+        invoker.add_command(Triage(args.input_path, args.output_path, args.log_format, args.sigma_rule_path))
 
     invoker.run()
