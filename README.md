@@ -43,9 +43,11 @@ python musashi.py -i /path/to/logs -o /path/to/output -lf defender
 ```  
 
 Arguments
+```
 -i, --input_path → (Required) Path to the log directory
 -o, --output_path → (Required) Path to the output directory for results
 -lf, --log_format → (Required) Log format (e.g., azure, defender, cortex, carbonblack)
+```
 
 ### Output
 After execution, Musashi provides:

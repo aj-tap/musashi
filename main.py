@@ -21,7 +21,10 @@ import pandas as pd
 import tempfile
 import zipfile
 import re
+from collections import defaultdict
+import json
 
+MITRE_CACHE_FILE = "mitre_attack_mapping.json"
 
 class Triage:
     def __init__(self, log_path, result_path, log_format):
@@ -63,6 +66,42 @@ class Triage:
         except Exception as e:
             print(f"Error in file processing: {e}")
             return None
+
+    def get_mitre_tactic_mapping(self):
+        """
+        Retrieves MITRE ATT&CK technique-to-tactic mappings.
+        - If cached, loads from local file.
+        - Otherwise, downloads and saves for future use.
+        
+        Returns:
+            dict: { "attack.t1036": ["Defense Evasion"], "attack.t1059.001": ["Execution"], ... }
+        """
+        if os.path.exists(MITRE_CACHE_FILE):
+            with open(MITRE_CACHE_FILE, "r") as file:
+                return json.load(file)
+    
+        print("[+] Downloading MITRE ATT&CK data...")
+    
+        import requests  # Only import if downloading
+        url = "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterprise-attack/enterprise-attack.json"
+        response = requests.get(url)
+        data = response.json()
+    
+        tactic_mapping = {}
+    
+        for obj in data["objects"]:
+            if obj["type"] == "attack-pattern" and "external_references" in obj:
+                for ref in obj["external_references"]:
+                    if "external_id" in ref and ref["external_id"].startswith("T"):
+                        technique_id = f"attack.{ref['external_id'].lower()}"
+                        tactics = [phase["phase_name"].capitalize() for phase in obj.get("kill_chain_phases", [])]
+                        tactic_mapping[technique_id] = tactics if tactics else ["Other"]
+    
+        # Save mapping locally
+        with open(MITRE_CACHE_FILE, "w") as file:
+            json.dump(tactic_mapping, file, indent=4)
+    
+        return tactic_mapping
 
     def update_sigma_rules(self):
         """Check for updates, download, and extract the latest Sigma rules only if needed."""
@@ -119,7 +158,7 @@ class Triage:
         os.makedirs(local_dir, exist_ok=True)
         with zipfile.ZipFile(zip_file, "r") as zip_ref:
             zip_ref.extractall(local_dir)
-        print(f"📂 Extracted files to {local_dir}")
+        print(f"Extracted files to {local_dir}")
 
         # Step 6: Save the new version number
         with open(version_file, "w") as f:
@@ -177,7 +216,7 @@ class Triage:
                 converted_rule = superDBBackend().convert_rule(sigma_rule)
                 
                 loaded_count += 1  # Increment successful rule load counter
-                return sigma_rule.title, converted_rule[0]  # Return rule title & query
+                return sigma_rule.title, converted_rule[0], sigma_rule.tags  # Return rule title & query
     
             except Exception as e:
                 # print(f"Error processing rule {rule_file}: {e}")
@@ -192,13 +231,17 @@ class Triage:
         return converted_rules
 
     def perform_detections(self):
-        """Executes queries in parallel, logs hits with rule titles, saves individual results, and merges all results."""
+        """Executes queries in parallel, logs hits with rule titles, 
+           saves individual results, and builds a MITRE ATT&CK timeline.
+        """
         
         all_results = []
         rule_hit_count = Counter()  
-        print(f"=== Detections ===")
-
-        def execute_query(query, rule_title):
+        mitre_timeline = defaultdict(list)  # Stores MITRE techniques with detected rules
+        
+        print(f"\n=== Detections ===")
+    
+        def execute_query(query, rule_title, mitre_tags):
             fin_query = f"from logs | {query}"
             res = self.superdb.execute_query(query=fin_query)
     
@@ -212,21 +255,25 @@ class Triage:
                 all_results.append(df)  
                 rule_hit_count[rule_title] = len(df)  
     
+                # Log MITRE ATT&CK techniques
+                for mitre in mitre_tags:
+                    mitre_timeline[mitre].append(rule_title)
+    
                 print(f"Sigma Rule Triggered: - {rule_title}")
     
-        queries = self.get_sigma_rules()
+        queries = self.get_sigma_rules()  # Now returns (rule_title, query, mitre_tags)
     
         with ThreadPoolExecutor() as executor:
-            executor.map(lambda q: execute_query(q[1], q[0]), queries)
+            executor.map(lambda q: execute_query(q[1], q[0], q[2]), queries)
     
         if all_results:
             merged_df = pd.concat(all_results, ignore_index=True)
-            merged_output = os.path.join(self.output_path, "sigma.csv")
+            merged_output = os.path.join(self.output_path, "all-sigma-results.csv")
             merged_df.to_csv(merged_output, index=False)
             print(f"All sigma results merged and saved to {merged_output}")
-
+    
         if rule_hit_count:
-            self.display_ascii_stats(rule_hit_count)
+            self.display_ascii_stats(rule_hit_count, mitre_timeline)
 
     def extract_iocs_from_text(self, text):
         """Extract unique IOCs (Indicators of Compromise) from a given text using regex."""
@@ -251,7 +298,7 @@ class Triage:
         return extracted_iocs
 
     def extract_iocs(self):
-        print("=== Extracted IOCs Results ===")
+        print("\n=== Extracted IOCs Results ===")
         query = f"from logs"
         res = self.superdb.execute_query(query=query)
         if isinstance(res, list):
@@ -271,28 +318,76 @@ class Triage:
             #print(f"{key.upper()} ({len(values)}): {values[:5]}...")  # Print first 5 samples
             print(f"{key.upper()}: ({len(values)})") 
 
-    def display_ascii_stats(self, rule_hit_count):
-        """Displays hit counts as a sorted ASCII table and normalized bar chart."""
-        
+    def display_ascii_stats(self, rule_hit_count, mitre_timeline):
+        """
+        Displays Sigma rule hit counts as a sorted ASCII table.
+        Also categorizes MITRE ATT&CK detections under their respective tactics.
+        """
         print("\n=== Sigma Detection Results Summary ===")
-
+    
         # Sort results by hit count (descending)
         sorted_hits = sorted(rule_hit_count.items(), key=lambda x: x[1], reverse=True)
-
+    
         # Get max values for scaling
-        max_label_length = max(len(k) for k, _ in sorted_hits)  
-        max_count = max(v for _, v in sorted_hits)  
-
-        # Normalize bars (avoid one rule dominating the chart)
-        MAX_BAR_WIDTH = 50  # Set a max width for the longest bar
-
+        max_label_length = max(len(k) for k, _ in sorted_hits)
+        max_count = max(v for _, v in sorted_hits)
+    
+        MAX_BAR_WIDTH = 50  # Normalize bar widths
+    
         for rule, count in sorted_hits:
             bar_length = int((count / max_count) * MAX_BAR_WIDTH)
-            bar = "█" * bar_length  # Use solid blocks for a cleaner look
+            bar = "█" * bar_length
             print(f"{rule.ljust(max_label_length)} | {bar} ({count})")
-
-        # Print sorted table summary
-        print("\n" + tabulate(sorted_hits, headers=["SigmaRule", "Hits"], tablefmt="grid"))
+    
+        # Print table
+        #print("\n" + tabulate(sorted_hits, headers=["Sigma Rule", "Hits"], tablefmt="grid"))
+    
+        # === MITRE ATT&CK Timeline ===
+        print("\n=== MITRE ATT&CK Detection Timeline ===")
+    
+        # Load MITRE ATT&CK mappings
+        tactic_mapping = self.get_mitre_tactic_mapping()
+    
+        # Categorize detections
+        tactic_grouped = defaultdict(lambda: defaultdict(list))
+    
+        for technique, rules in mitre_timeline.items():
+            if not isinstance(technique, str):
+                technique = str(technique)  # Convert to string if needed
+            
+            technique = technique.lower()  # Normalize
+    
+            # Find associated tactic(s) and exclude unmapped techniques
+            tactics = tactic_mapping.get(technique)
+            if not tactics:
+                continue  # Skip techniques that have no mapped tactic
+            
+            for tactic in tactics:
+                tactic_grouped[tactic][technique].extend(rules)
+    
+        # Sort tactics by total detections
+        sorted_tactics = sorted(
+            tactic_grouped.items(), 
+            key=lambda x: sum(len(v) for v in x[1].values()), 
+            reverse=True
+        )
+    
+        mitre_table = []
+    
+        for tactic, techniques in sorted_tactics:
+            total_detections = sum(len(rules) for rules in techniques.values())
+    
+            # Sort techniques by detection count
+            sorted_techniques = sorted(techniques.items(), key=lambda x: len(x[1]), reverse=True)
+    
+            for technique, rules in sorted_techniques:
+                for rule in rules:
+                    mitre_table.append([tactic.capitalize(), technique, rule])
+    
+        if mitre_table:
+            print("\n" + tabulate(mitre_table, headers=["Tactic", "Technique", "Rule"], tablefmt="grid"))
+        else:
+            print("No mapped MITRE ATT&CK detections.")
 
     def init_lake(self):
         """Initializes the data lake using Zed commands."""
