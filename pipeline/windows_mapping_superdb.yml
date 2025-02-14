@@ -1,0 +1,113 @@
+name: Add EventData_ or System_ Prefix
+priority: 30
+transformations:
+  - id: system_fields_prefix
+    type: field_name_prefix
+    prefix: "System_"
+    field_name_conditions:
+      - type: include_fields
+        fields:
+          - EventID
+          - Version
+          - Level
+          - Task
+          - Opcode
+          - Keywords
+          - TimeCreated_#attributes_SystemTime
+          - EventRecordID
+          - Correlation
+          - Execution_#attributes_ProcessID
+          - Execution_#attributes_ThreadID
+          - Channel
+          - Computer
+          - Security
+          - Provider_#attributes_Name
+          - Provider_#attributes_Guid
+          - EventSourceName
+          - EventLog
+          - EventCategory
+          - SystemTime
+          - ProcessID
+          - ThreadID
+          - ActivityID
+          - RelatedActivityID
+          - SecurityUserID
+          - SecurityDomain
+          - SecurityAccountName
+          - SecurityIdentifier
+
+  - id: eventdata_fields_prefix
+    type: field_name_prefix
+    prefix: "EventData_"
+    field_name_conditions:
+      - type: include_fields
+        fields:
+          - UserPrincipalName
+          - HomeDirectory
+          - HomePath
+          - ScriptPath
+          - ProfilePath
+          - UserWorkstations
+          - PasswordLastSet
+          - AccountExpires
+          - PrimaryGroupId
+          - AllowedToDelegateTo
+          - OldUacValue
+          - NewUacValue
+          - UserAccountControl
+          - UserParameters
+          - SidHistory
+          - LogonHours
+          - Dummy
+          - MemberName
+          - MemberSid
+          - PackageName
+          - Workstation
+          - NewState
+          - ResourceManager
+          - TaskName
+          - TaskContent
+          - TargetUserName
+          - TargetDomainName
+          - TargetSid
+          - SubjectUserName
+          - SubjectDomainName
+          - SubjectLogonId
+          - PrivilegeList
+          - LogonProcessName
+          - AuthenticationPackageName
+          - LogonType
+          - RestrictedAdminMode
+          - VirtualAccount
+          - ElevationType
+          - WorkstationName
+          - SourceNetworkAddress
+          - SourcePort
+          - ImpersonationLevel
+          - FailureReason
+          - SubStatus
+          - ProcessName
+          - CommandLine
+          - ProcessCommandLine
+          - ParentProcessName
+          - ParentProcessCommandLine
+          - ServiceName
+          - ServiceFileName
+          - ObjectName
+          - ObjectType
+          - HandleId
+          - Image
+          - AccessMask
+          - ShareName
+          - ShareLocalPath
+          - NetworkShareName
+          - NetworkSharePath
+          - DeviceName
+          - NewProcessId
+          - NewProcessName
+          - TokenElevationType
+          - SourceUserId
+          - DestinationUserId
+          - GroupMembership
+          - IntegrityLevel
+          - AuditPolicyChanges

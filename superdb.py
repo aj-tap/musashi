@@ -74,7 +74,7 @@ class superDBBackend(TextQueryBackend):
     
     field_equals_field_expression: ClassVar[Optional[str]] = None
     field_equals_field_escaping_quoting: Tuple[bool, bool] = (True, True)
-    field_null_expression: ClassVar[str] = "{field} IS NULL"
+    field_null_expression: ClassVar[str] = "{field}==null"
     
     convert_or_as_in: ClassVar[bool] = False
     convert_and_as_in: ClassVar[bool] = False
