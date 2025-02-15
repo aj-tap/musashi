@@ -28,6 +28,12 @@ import yaml
 from sigma.processing.pipeline import ProcessingPipeline
 from openai import OpenAI
 
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.ensemble import IsolationForest
+import tensorflow as tf
+from tensorflow import keras
+
 MITRE_CACHE_FILE = "mitre_attack_mapping.json"
 
 def flatten_json(nested_json, prefix=""):
@@ -503,6 +509,66 @@ class Triage:
     
         return completion.choices[0].message.content  # Returns only the YAML rule
 
+    def perform_anomaly_detections(self):
+        fin_query = f"from logs"
+        res = self.superdb.execute_query(query=fin_query)
+        data = pd.DataFrame(res)
+        #data = pd.read_csv(self.log_path, low_memory=False)
+        numeric_features = data.select_dtypes(include=['number'])
+        if numeric_features.empty:
+            raise ValueError("🚨 No numeric columns found! Ensure logs contain valid numeric data.")
+        # Normalize data (MinMaxScaler is better for anomaly detection)
+        scaler = MinMaxScaler()
+        features_scaled = scaler.fit_transform(numeric_features)
+        if np.isnan(features_scaled).any():
+            print("NaN detected! Replacing with 0.")
+            features_scaled = np.nan_to_num(features_scaled)  # Replace NaNs with 0
+        model = keras.Sequential([
+            keras.layers.Dense(32, activation='relu', input_shape=(features_scaled.shape[1],)),
+            keras.layers.Dense(16, activation='relu'),
+            keras.layers.Dense(8, activation='relu'),  # Bottleneck layer
+            keras.layers.Dense(16, activation='relu'),
+            keras.layers.Dense(32, activation='relu'),
+            keras.layers.Dense(features_scaled.shape[1], activation='linear')
+        ])
+        model.compile(optimizer='adam', loss='mse')
+        model.fit(features_scaled, features_scaled, epochs=10, batch_size=64, validation_split=0.1, verbose=1)
+        reconstructions = model.predict(features_scaled)
+        if np.isnan(reconstructions).any():
+            raise ValueError("Autoencoder produced NaN values! Check data preprocessing.")
+        mse = np.mean(np.abs(reconstructions - features_scaled), axis=1)
+        if np.isnan(mse).any():
+            raise ValueError("MSE calculation resulted in NaNs. Check input data.")
+        threshold = np.percentile(mse, 90)
+        data['Anomaly_Autoencoder'] = (mse > threshold).astype(int)
+        # Step 2: Isolation Forest for Anomaly Detection
+        iso_forest = IsolationForest(contamination=0.05, random_state=42)
+        iso_forest.fit(features_scaled)
+        iso_predictions = iso_forest.predict(features_scaled)
+        data['Anomaly_IsolationForest'] = (iso_predictions == -1).astype(int)
+        
+        # Filter and save anomalies
+        anomalies_autoencoder = data[data['Anomaly_Autoencoder'] == 1]
+        anomalies_isolation = data[data['Anomaly_IsolationForest'] == 1]
+        
+        print("=== Anomalous Data (Autoencoder) ===\n", anomalies_autoencoder)
+        print("=== Anomalous Data (Isolation Forest) ===\n", anomalies_isolation)
+        
+        anomalies_autoencoder_output = os.path.join(self.output_path, "anomalies_autoencoder.csv")
+        anomalies_isolation_output = os.path.join(self.output_path, "anomalies_isolation_forest.csv")
+        
+        # Save anomalies to CSV
+        anomalies_autoencoder.to_csv(anomalies_autoencoder_output, index=False)
+        anomalies_isolation.to_csv(anomalies_isolation_output, index=False)
+
+        self.superdb.create_pool(name='anomalies_isolation', layout_order='asc', thresh=None)        
+        self.superdb.load_data_to_branch('anomalies_isolation', 'main', anomalies_isolation.to_csv(index=False), csv_delim=',')
+
+        self.superdb.create_pool(name='anomalies_autoencoder', layout_order='asc', thresh=None)        
+        self.superdb.load_data_to_branch('anomalies_autoencoder', 'main', anomalies_autoencoder.to_csv(index=False), csv_delim=',')
+        
+        print("Anomaly detection complete! Results saved at pool and lake. ")
+    
     def perform_additional_detections(self):
         print("\n === AI Assistance Threat hunt ===")
         #print("\n Generated Sigma detection: ")
@@ -599,6 +665,7 @@ class Triage:
                 self.ingest_data(cleaned_file)
                 self.extract_iocs()
                 self.perform_detections()
+                self.perform_anomaly_detections()                
                 if self.openai_api:
                     self.perform_additional_detections()                                       
                 print("Triage completed successfully.")
