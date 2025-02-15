@@ -1,6 +1,6 @@
 # Musashi  
 
-Musashi is a Python 3 tool designed for rapid triage of logs using SIGMA rules. It supports various log formats, including Azure, Defender, Cortex, CarbonBlack, and more. Musashi also extracts Indicators of Compromise (IOCs) to assist in quick threat detection and incident response.
+Musashi is a Python 3 tool designed for quickly analyzing logs using SIGMA rules and DL anomaly detection techniques. It works with various log formats, including Azure, Defender, Cortex, and CarbonBlack. Musashi also identifies Indicators of Compromise (IOCs) to help with fast threat detection and incident response.
 
 below is sample demo of EDR logs from Defender Musashi demonstrates the use case of EDR logs from Defender detecting Lumma Stealer through a fake CAPTCHA.
 
@@ -19,6 +19,7 @@ When responding to security incidents, time is critical. Instead of manually que
 ## What Musashi Does:
 - Rapid Log Triage – Quickly process logs for threat detection
 - SIGMA Rule Matching – Identify malicious activity based on SIGMA queries
+- DL Anomaly Detection – Use deep learning with Autoencoders and Isolation Forest to find anomalies
 - IOC Extraction – Extract IPs, domains, file hashes, and other indicators
 - Log Slicing – Splits logs into SIGMA query results and extracted IOCs for easy analysis
 
@@ -40,12 +41,14 @@ When responding to security incidents, time is critical. Instead of manually que
 ### Running Musashi  
 ```bash
 python musashi.py -i /path/to/logs -o /path/to/output -lf defender
+python musashi.py -i sample.evtx -o /output -lf winevtx -s sigma_rules/rules/windows/
 ```  
 
 Arguments
 ```
 -i, --input_path → (Required) Path to the log directory
 -o, --output_path → (Required) Path to the output directory for results
+-s, --sigma_rule_path → Set Sigma rules directory or file path (If no specific Sigma rules directory or file path is set
 -lf, --log_format → (Required) Log format (e.g., winevtx, azure, defender, cortex, carbonblack)
 -a,  --openai → (Optional) Supply openai api key to perform additional detections
 ```
@@ -53,6 +56,7 @@ Arguments
 ### Output
 After execution, Musashi provides:
 - Detected threats based on SIGMA rules
+- Log Anomalies result of DL. 
 - Extracted IOCs (IPs, domains, file hashes)
 
 ## Contributing
